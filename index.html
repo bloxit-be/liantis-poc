@@ -6906,6 +6906,13 @@
 
   
 <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+<style>
+  /* Loaded after n8n's stylesheet so this wins the cascade. */
+  #n8n-chat {
+    --chat--window--width: min(800px, 92vw) !important;
+    --chat--window--height: min(680px, 80vh) !important;
+  }
+</style>
 <script type="module">
   import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
 
