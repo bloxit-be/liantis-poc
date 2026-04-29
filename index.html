@@ -6916,6 +6916,16 @@
 <script type="module">
   import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
 
+  // PoC: force a fresh chat session on every page load so demos always start clean.
+  // The @n8n/chat widget persists sessionId + history in localStorage/sessionStorage.
+  try {
+    [localStorage, sessionStorage].forEach(function (store) {
+      Object.keys(store).forEach(function (k) {
+        if (/chat|n8n|session/i.test(k)) store.removeItem(k);
+      });
+    });
+  } catch (e) { /* ignore storage errors (private mode etc.) */ }
+
   createChat({
     webhookUrl: 'https://n8n.srv923316.hstgr.cloud/webhook/73bd13aa-75a6-4171-b1d8-e416bb02183f/chat',
     mode: 'window',
