@@ -6931,8 +6931,7 @@
     mode: 'window',
     showWelcomeScreen: false,
     defaultLanguage: 'en',
-    allowFileUploads: true,
-    allowedFilesMimeTypes: 'image/*',
+    allowFileUploads: false,
     initialMessages: [
       'Hallo! 👋 Ik help je bij de start van je eenmanszaak.',
       'Vertel me kort wat je gaat doen, en ik begeleid je door de intake.'
@@ -6943,36 +6942,11 @@
         subtitle: 'samen werkt',
         footer: '',
         getStarted: 'Start het gesprek',
-        inputPlaceholder: 'Typ een bericht of voeg een foto toe…',
+        inputPlaceholder: 'Typ een bericht...',
         closeButtonTooltip: 'Sluiten'
       }
     }
   });
-
-  // PoC: auto-fill textarea with a friendly placeholder when a photo is attached
-  // (the @n8n/chat widget requires non-empty text to enable the send button).
-  (function patchChatImageOnly() {
-    const PLACEHOLDER = '📷 Foto van mijn eID';
-    const obs = new MutationObserver(() => {
-      const root = document.querySelector('#n8n-chat');
-      if (!root) return;
-      const fileInputs = root.querySelectorAll('input[type="file"]');
-      fileInputs.forEach(function (fi) {
-        if (fi.dataset.pocPatched) return;
-        fi.dataset.pocPatched = '1';
-        fi.addEventListener('change', function () {
-          if (!fi.files || fi.files.length === 0) return;
-          const textarea = root.querySelector('textarea');
-          if (!textarea) return;
-          if (textarea.value && textarea.value.trim()) return;
-          const desc = Object.getOwnPropertyDescriptor(window.HTMLTextAreaElement.prototype, 'value');
-          desc.set.call(textarea, PLACEHOLDER);
-          textarea.dispatchEvent(new Event('input', { bubbles: true }));
-        });
-      });
-    });
-    obs.observe(document.body, { childList: true, subtree: true });
-  })();
 </script>
 
 <script>
