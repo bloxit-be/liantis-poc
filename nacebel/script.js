@@ -80,7 +80,6 @@
     }
 
     const payload = {
-      Naam: form.elements['Naam'].value.trim(),
       Email: form.elements['Email'].value.trim(),
       Activiteit: form.elements['Activiteit'].value.trim(),
     };
@@ -117,7 +116,7 @@
     setLoading(btnSubmit, false);
     btnRandom.disabled = false;
     btnSubmit.querySelector('.lp-btn-label').textContent = ORIG_SUBMIT_LABEL;
-    document.getElementById('naam').focus();
+    document.getElementById('email').focus();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 })();
