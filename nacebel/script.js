@@ -15,7 +15,8 @@
   const btnSubmit = document.getElementById('btn-submit');
   const btnRandom = document.getElementById('btn-random');
   const btnAgain = document.getElementById('btn-again');
-  const fldActiviteit = document.getElementById('activiteit');
+  const fldHoofd = document.getElementById('hoofdactiviteit');
+  const fldNeven = document.getElementById('nevenactiviteiten');
 
   const ORIG_RANDOM_LABEL = btnRandom.querySelector('.lp-btn-label').textContent;
   const ORIG_SUBMIT_LABEL = btnSubmit.querySelector('.lp-btn-label').textContent;
@@ -50,16 +51,19 @@
       const res = await fetch(RANDOM_URL, { method: 'GET' });
       if (!res.ok) throw new Error('HTTP ' + res.status);
       const data = await res.json();
-      const desc = data && (data.activity_description || data.description);
-      if (!desc) throw new Error('Geen beschrijving terug');
+      const hoofd = data && (data.hoofdactiviteit || '').trim();
+      const neven = data && (data.nevenactiviteiten || data.nevenactiviteit || '').trim();
+      if (!hoofd) throw new Error('Geen hoofdactiviteit terug');
 
-      fldActiviteit.value = desc;
-      fldActiviteit.classList.add('flash');
-      fldActiviteit.dispatchEvent(new Event('input', { bubbles: true }));
-      setTimeout(() => fldActiviteit.classList.remove('flash'), 600);
-      fldActiviteit.focus();
-      // place cursor at end
-      fldActiviteit.setSelectionRange(desc.length, desc.length);
+      fldHoofd.value = hoofd;
+      fldNeven.value = neven;
+      [fldHoofd, fldNeven].forEach((f) => {
+        f.classList.add('flash');
+        f.dispatchEvent(new Event('input', { bubbles: true }));
+        setTimeout(() => f.classList.remove('flash'), 600);
+      });
+      fldHoofd.focus();
+      fldHoofd.setSelectionRange(hoofd.length, hoofd.length);
     } catch (err) {
       console.error('random use-case failed', err);
       showError('Kon geen use case verzinnen — probeer opnieuw.');
@@ -81,7 +85,8 @@
 
     const payload = {
       Email: form.elements['Email'].value.trim(),
-      Activiteit: form.elements['Activiteit'].value.trim(),
+      Hoofdactiviteit: form.elements['Hoofdactiviteit'].value.trim(),
+      Nevenactiviteiten: form.elements['Nevenactiviteiten'].value.trim(),
     };
 
     setLoading(btnSubmit, true, 'Versturen…');

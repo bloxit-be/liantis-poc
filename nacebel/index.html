@@ -40,16 +40,29 @@
         </div>
 
         <div class="lp-field">
-          <label for="activiteit">
-            Wat wil je gaan doen?
-            <span class="lp-label-aside">één hoofd- en eventueel bijactiviteit(en)</span>
+          <label for="hoofdactiviteit">
+            Hoofdactiviteit
+            <span class="lp-label-aside">wat is je kernactiviteit?</span>
           </label>
           <textarea
-            id="activiteit"
-            name="Activiteit"
-            rows="5"
+            id="hoofdactiviteit"
+            name="Hoofdactiviteit"
+            rows="3"
             required
-            placeholder="bv. Ik wil een ambulant koffie-kraampje openen op weekendmarkten in Vlaanderen, en daarnaast online cursussen geven over barista-vaardigheden."
+            placeholder="bv. Ik wil een ambulant koffie-kraampje openen op weekendmarkten in Vlaanderen, met een focus op single-origin filterkoffie."
+          ></textarea>
+        </div>
+
+        <div class="lp-field">
+          <label for="nevenactiviteiten">
+            Nevenactiviteiten
+            <span class="lp-label-aside">optioneel — wat doe je er nog naast?</span>
+          </label>
+          <textarea
+            id="nevenactiviteiten"
+            name="Nevenactiviteiten"
+            rows="3"
+            placeholder="bv. Daarnaast wil ik online cursussen geven over barista-vaardigheden, en occasioneel koffiemachines herstellen voor particulieren."
           ></textarea>
           <button type="button" id="btn-random" class="lp-btn lp-btn-ghost">
             <svg class="lp-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
