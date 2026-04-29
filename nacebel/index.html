@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex,nofollow" />
+  <link rel="preconnect" href="https://n8n.srv923316.hstgr.cloud" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" />
+  <title>NACEBEL coderen · Liantis PoC</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="poc-banner" role="banner">
+    <span class="poc-badge">DEMO</span>
+    <strong>Bloxit PoC</strong> — geen officiële Liantis-pagina, gehost voor demo-doeleinden.
+  </div>
+
+  <header class="lp-hero">
+    <div class="lp-hero-inner">
+      <img class="lp-logo" src="liantis-logo.svg" alt="Liantis" />
+      <span class="lp-tagline">samen werkt</span>
+    </div>
+  </header>
+
+  <main class="lp-page">
+    <section class="lp-card" id="form-card">
+      <h1>NACEBEL-codes voor jouw activiteit</h1>
+      <p class="lp-lead">
+        Beschrijf in je eigen woorden wat je wil ondernemen. Onze AI-assistent
+        zoekt de meest passende NACEBEL-codes voor je en stuurt die per mail.
+      </p>
+
+      <form id="nace-form" class="lp-form" novalidate>
+        <div class="lp-field">
+          <label for="naam">Naam</label>
+          <input type="text" id="naam" name="Naam" required autocomplete="name" />
+        </div>
+
+        <div class="lp-field">
+          <label for="email">E-mailadres</label>
+          <input type="email" id="email" name="Email" required autocomplete="email" />
+          <small class="lp-hint">Het resultaat krijg je op dit adres toegestuurd.</small>
+        </div>
+
+        <div class="lp-field">
+          <label for="activiteit">
+            Wat wil je gaan doen?
+            <span class="lp-label-aside">één hoofd- en eventueel bijactiviteit(en)</span>
+          </label>
+          <textarea
+            id="activiteit"
+            name="Activiteit"
+            rows="5"
+            required
+            placeholder="bv. Ik wil een ambulant koffie-kraampje openen op weekendmarkten in Vlaanderen, en daarnaast online cursussen geven over barista-vaardigheden."
+          ></textarea>
+          <button type="button" id="btn-random" class="lp-btn lp-btn-ghost">
+            <svg class="lp-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+              <circle cx="8" cy="9" r="1"/>
+              <circle cx="16" cy="9" r="1"/>
+              <circle cx="12" cy="12" r="1"/>
+              <circle cx="8" cy="15" r="1"/>
+              <circle cx="16" cy="15" r="1"/>
+            </svg>
+            <span class="lp-btn-label">Verzin een use case voor mij</span>
+          </button>
+        </div>
+
+        <div class="lp-actions">
+          <button type="submit" id="btn-submit" class="lp-btn lp-btn-primary">
+            <span class="lp-btn-label">Verzend</span>
+          </button>
+        </div>
+
+        <p class="lp-meta">
+          We bewaren je gegevens niet — deze demo dient enkel om de AI-flow te tonen.
+        </p>
+      </form>
+
+      <div id="form-error" class="lp-error" hidden role="alert"></div>
+    </section>
+
+    <section class="lp-card lp-card-success" id="success-card" hidden>
+      <div class="lp-success-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+      </div>
+      <h1>Bedankt!</h1>
+      <p class="lp-lead">
+        We sturen je binnen ±2 minuten een mail met de voorgestelde NACEBEL-codes
+        en korte uitleg.
+      </p>
+      <p class="lp-meta">Niets in je inbox? Check zeker je spam-folder.</p>
+      <button type="button" id="btn-again" class="lp-btn lp-btn-ghost">Nog een aanvraag doen</button>
+    </section>
+
+    <footer class="lp-footer">
+      Liantis · samen werkt &nbsp;·&nbsp; <a href="https://bloxit-be.github.io/liantis-poc/" data-poc-allow="true">terug naar overzicht</a>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
