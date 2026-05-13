@@ -1,26 +1,18 @@
-# Liantis PoC — eenmanszaak intake demo
+# liantis-poc (gearchiveerd)
 
-**Dummy / proof of concept.** Niet de officiële Liantis website.
+Deze repo bevatte een tijdelijke proof-of-concept demo van Bloxit. De demo is
+offline gehaald en de inhoud is vervangen door een sobere "demo niet meer
+beschikbaar" pagina.
 
-Statische kopie van `liantis.be/nl` met een geïntegreerd n8n-chatvenster dat de eenmanszaak-intake-agent aanroept. Bedoeld voor een management-demo.
+## Recovery
 
-## Wat het doet
-- Visueel zo dicht mogelijk bij de echte landingspagina (HTML/CSS/assets gemirrord)
-- Alle navigatie-links zijn uitgeschakeld (PoC blijft op één pagina)
-- Google Tag Manager / tracking gestript
-- `noindex, nofollow` zodat Google deze niet indexeert
-- Sticky paarse banner bovenaan markeert dit als demo
-- Floating chatknop rechtsonder → opent n8n eenmanszaak-intake-agent
+De volledige originele inhoud is bewaard als git tag op origin:
 
-## Chat-backend
-Webhook: `https://n8n.srv923316.hstgr.cloud/webhook/73bd13aa-75a6-4171-b1d8-e416bb02183f/chat`
-Workflow: `8rKLovYlnrgIsvkx` ("Eenmanszaak intake-agent (WIP)")
-
-## Lokaal testen
 ```bash
-python3 -m http.server 8000
-# open http://localhost:8000
+git fetch --tags
+git checkout archive/pre-takedown-2026-05-13
 ```
 
-## Disclaimer
-Alle content (tekst, afbeeldingen, branding) is eigendom van Liantis VZW. Deze repo wordt enkel als interne PoC gebruikt en zal niet publiek geadverteerd worden.
+## Contact
+
+[bloxit.be](https://bloxit.be) — kevin@bloxit.be
